@@ -7,18 +7,18 @@ dockerfile = "Dockerfile"
 path = "./scripts/setup.sh"
 shell = "/bin/bash"
 timeoutSec = 120
-env = { EULA_USER="auto-accept" }
+env = { EULA_USER = "auto-accept" }
 
 [service.run]
-env = {
-  EULA = "TRUE",
-  TYPE = "PAPER",
-  VERSION = "1.20.6",
-  ONLINE_MODE = "TRUE",
-  ENABLE_RCON = "FALSE",
-  ENABLE_QUERY = "TRUE",
-  JVM_OPTS = "-Xmx512M -Xms256M"
-}
-ports = ["25565:25565/tcp","25565:25565/udp"]
+ports = ["25565:25565/tcp", "25565:25565/udp"]
 volumes = ["./data:/data"]
 extraArgs = ["--restart=unless-stopped"]
+
+[service.run.env]
+EULA = "TRUE"
+TYPE = "PAPER"
+VERSION = "1.20.6"
+ONLINE_MODE = "TRUE"
+ENABLE_RCON = "FALSE"
+ENABLE_QUERY = "TRUE"
+JVM_OPTS = "-Xmx512M -Xms256M"
